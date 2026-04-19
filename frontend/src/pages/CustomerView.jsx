@@ -62,6 +62,7 @@ const CustomerView = () => {
             Search
           </button>
         </form>
+        <p style={{ marginTop: '1rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', fontStyle: 'italic' }}>Salman bhai ki jai ho ✨</p>
       </div>
 
       {/* Results Section */}
