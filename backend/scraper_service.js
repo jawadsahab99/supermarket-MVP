@@ -17,6 +17,8 @@ const initializeScraper = () => {
             // Randomly update 10% of products to simulate dynamic market changes
             for (const priceRow of prices) {
                 // 15% chance to fluctuate price
+                // DISABLED FOR FINAL MVP: user wants static accurate prices.
+                /*
                 if (Math.random() < 0.15) {
                     // Fluctuate price by up to +/- 5%
                     const variation = 1 + (Math.random() * 0.10 - 0.05);
@@ -25,6 +27,7 @@ const initializeScraper = () => {
                     await pool.query('UPDATE prices SET current_price = ? WHERE id = ?', [newPrice, priceRow.id]);
                     updateCount++;
                 }
+                */
             }
 
             console.log(`[Scraper Service] ✅ Successfully scraped websites and updated ${updateCount} prices in real-time.`);
