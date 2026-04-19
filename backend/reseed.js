@@ -7,12 +7,13 @@ async function reseedDB() {
             host: process.env.DB_HOST || 'localhost',
             user: process.env.DB_USER || 'root',
             password: process.env.DB_PASSWORD || 'supermarket_admin',
+            database: process.env.DB_NAME || 'defaultdb',
+            port: process.env.DB_PORT || 3306,
+            ssl: { rejectUnauthorized: false }
         });
 
-        console.log('Connected. Dropping database to reseed fresh Pak data...');
-        await connection.query('DROP DATABASE IF EXISTS `supermarket_db`');
-        await connection.query('CREATE DATABASE `supermarket_db`');
-        await connection.query('USE `supermarket_db`');
+        console.log('Connected. Dropping tables to reseed fresh Pak data...');
+        await connection.query('DROP TABLE IF EXISTS prices, promotions, products, supermarkets, admins;');
 
         // Recreate tables
         await connection.query(`
